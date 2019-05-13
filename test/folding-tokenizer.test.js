@@ -44,3 +44,42 @@ describe('asciifolding tokenizer', () => {
     expect(asciiFoldingTokenizer('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual(['iлternationɑlizati߀ԉo']);
   });
 });
+
+describe('tokenizer', () => {
+  it('a string contains punctuation', () => {
+    expect(asciiFoldingTokenizer('~!@#$%^&*(){}?+|<>;:-s/=][09813923871`_86643aest-KWW_E00ZB ()*abc&^%.123!%#$@!')).toEqual([
+      's',
+      '09813923871',
+      '_86643aest',
+      'kww_e00zb',
+      'abc',
+      '123',
+    ]);
+  });
+
+  it('empty string', () => {
+    expect(asciiFoldingTokenizer()).toEqual([]);
+  });
+
+  it("a string contains only '_' character", () => {
+    expect(asciiFoldingTokenizer('_')).toEqual([]);
+    expect(asciiFoldingTokenizer('__')).toEqual([]);
+    expect(asciiFoldingTokenizer('___')).toEqual([]);
+  });
+
+  it('___abc', () => {
+    expect(asciiFoldingTokenizer('___abc')).toEqual(['___abc']);
+  });
+
+  it('abc___', () => {
+    expect(asciiFoldingTokenizer('abc___')).toEqual(['abc___']);
+  });
+
+  it('___abc___', () => {
+    expect(asciiFoldingTokenizer('___abc___')).toEqual(['___abc___']);
+  });
+
+  it('abc xyz 123_456 _123_456__ __123 456_', () => {
+    expect(asciiFoldingTokenizer('abc xyz 123_456 _123_456__ __123 456_')).toEqual(['abc', 'xyz', '123_456', '_123_456__', '__123', '456_']);
+  });
+});

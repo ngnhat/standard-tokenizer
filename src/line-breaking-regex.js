@@ -1,13 +1,13 @@
 // http://www.unicode.org/Public/12.0.0/ucd/LineBreak.txt
 // https://github.com/mathiasbynens/unicode-data/tree/master/10.0.0/blocks
 const Ideographic = require('unicode-12.1.0/Line_Break/Ideographic/regex');
-const asciiMapping = require('./ascii-mapping');
+const asciiLineBreakMapping = require('./ascii-line-break-mapping');
 
 // Diacritical code charts https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
 const diacriticalMarksSource = (/\u0300-\u036f/).source;
-const asciiMappingSource = [...asciiMapping.keys()].join('');
+const asciiLineBreakMappingSource = [...asciiLineBreakMapping.keys()].join('');
 
-const STANDARD = `[a-zA-Z0-9_${asciiMappingSource}${diacriticalMarksSource}]+`;
+const STANDARD = `[a-zA-Z0-9_${asciiLineBreakMappingSource}${diacriticalMarksSource}]+`;
 const IDEOGRAPHIC = Ideographic.source;
 
 const SA = Object.values({

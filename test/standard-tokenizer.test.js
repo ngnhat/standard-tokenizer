@@ -43,6 +43,58 @@ describe('standard tokenizer', () => {
   it.skip('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
     expect(standardTokenizer('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual(['iлternationɑlizati߀ԉo']);
   });
+
+  // combodia + thai
+  it.skip('ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา', () => {
+    expect(standardTokenizer('ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา')).toEqual(['ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา']);
+  });
+
+  it('一龯', () => {
+    expect(standardTokenizer('一龯')).toEqual(['一', '龯']);
+  });
+
+  it('漢字 一龠々', () => {
+    expect(standardTokenizer('漢字 一龠々')).toEqual(['漢', '字', '一', '龠', '々']);
+  });
+
+  it('ひらがな ぁんー', () => {
+    expect(standardTokenizer('ひらがな ぁんー')).toEqual(['ひ', 'ら', 'が', 'な', 'ぁ', 'ん', 'ー']);
+  });
+
+  it('カタカナ ァヾ', () => {
+    expect(standardTokenizer('カタカナ ァヾ')).toEqual(['カ', 'タ', 'カ', 'ナ', 'ァ', 'ヾ']);
+  });
+
+  it.skip('一-龯ぁ-ゔゞァ-・ヽヾ゛゜ー', () => {
+    expect(standardTokenizer('一-龯ぁ-ゔゞァ-・ヽヾ゛゜ー')).toEqual([
+      '一',
+      '龯',
+      'ぁ',
+      'ゔ',
+      'ゞ',
+      'ァ',
+      'ヽヾ゛゜ー',
+    ]);
+  });
+
+  it.skip('㐀-䶵一-鿋豈-頻 ぁ-ゖ ゠-ヿ ⺀-⿕ 　-〿 ｟-ﾟ ㇰ-ㇿ㈠-㉃㊀-㍿', () => {
+    expect(standardTokenizer('㐀-䶵一-鿋豈-頻 ぁ-ゖ ゠-ヿ ⺀-⿕ 　-〿 ｟-ﾟ ㇰ-ㇿ㈠-㉃㊀-㍿')).toEqual([
+      '㐀',
+      '䶵',
+      '一',
+      '鿋',
+      '豈',
+      '頻',
+      'ぁ',
+      'ゖ',
+      '゠',
+      'ヿ',
+      '⺀',
+      '⿕',
+      'ㇰ',
+      'ㇿ',
+    ]);
+  });
 });
 
 describe('tokenizer', () => {

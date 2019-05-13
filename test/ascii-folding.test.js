@@ -1,41 +1,41 @@
-const normalize = require('../src/normalize');
+const asciiFolding = require('../src/ascii-folding');
 
-describe('normalize', () => {
+describe('asciiFolding', () => {
   it('without argument', () => {
-    expect(normalize()).toEqual('');
+    expect(asciiFolding()).toEqual('');
   });
 
   it('Cái nồi gì thế?', () => {
-    expect(normalize('Cái nồi gì thế?')).toEqual('Cai noi gi the?');
+    expect(asciiFolding('Cái nồi gì thế?')).toEqual('Cai noi gi the?');
   });
 
   it('Is this déjà vu?', () => {
-    expect(normalize('Is this déjà vu?')).toEqual('Is this deja vu?');
+    expect(asciiFolding('Is this déjà vu?')).toEqual('Is this deja vu?');
   });
 
   it('My œsophagus caused a débâcle', () => {
-    expect(normalize('My œsophagus caused a débâcle')).toEqual('My oesophagus caused a debacle');
+    expect(asciiFolding('My œsophagus caused a débâcle')).toEqual('My oesophagus caused a debacle');
   });
 
   it('صفحة أسيا أما بـ, حيث.', () => {
     const arabicLorem = 'صفحة أسيا أما بـ, حيث.';
-    expect(normalize(arabicLorem)).toEqual(arabicLorem);
+    expect(asciiFolding(arabicLorem)).toEqual(arabicLorem);
   });
 
   it('禁前自後民渡谷紹判設岐応。原感夢曜図会低座図郵狙回策強今品位読人続。', () => {
     const chineseLorem = '禁前自後民渡谷紹判設岐応。原感夢曜図会低座図郵狙回策強今品位読人続。';
-    expect(normalize(chineseLorem)).toEqual(chineseLorem);
+    expect(asciiFolding(chineseLorem)).toEqual(chineseLorem);
   });
 
   it('äußerst', () => {
-    expect(normalize('äußerst')).toEqual('ausserst');
+    expect(asciiFolding('äußerst')).toEqual('ausserst');
   });
 
   it.skip("John's", () => {
-    expect(normalize("John's")).toEqual('John');
+    expect(asciiFolding("John's")).toEqual('John');
   });
 
   it.skip("l'église", () => {
-    expect(normalize("l'église")).toEqual('eglis');
+    expect(asciiFolding("l'église")).toEqual('eglis');
   });
 });

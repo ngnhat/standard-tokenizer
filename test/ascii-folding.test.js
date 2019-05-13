@@ -31,6 +31,10 @@ describe('asciiFolding', () => {
     expect(asciiFolding('äußerst')).toEqual('ausserst');
   });
 
+  it('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
+    expect(asciiFolding('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual('Iлternationɑlizati߀ԉO');
+  });
+
   it.skip("John's", () => {
     expect(asciiFolding("John's")).toEqual('John');
   });

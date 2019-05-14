@@ -1,5 +1,5 @@
 const asciiMapping = require('./ascii-mapping');
-const lineBreakingRegex = require('./line-breaking-regex');
+const regexTokenizer = require('./regex-tokenizer');
 
 const SPECIAL_REGEX = /^_+$/g;
 const asciiMappingKeys = [...asciiMapping.keys()];
@@ -12,7 +12,7 @@ const asciifolding = (str = '') => (
 const asciiFoldingTokenizer = (str = '') => {
   try {
     const folded = asciifolding(str.toLowerCase());
-    const tokens = folded.match(lineBreakingRegex) || [];
+    const tokens = folded.match(regexTokenizer) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));
   } catch (err) {
@@ -23,7 +23,7 @@ const asciiFoldingTokenizer = (str = '') => {
 
 const standardTokenizer = (str = '') => {
   try {
-    const tokens = str.toLowerCase().match(lineBreakingRegex) || [];
+    const tokens = str.toLowerCase().match(regexTokenizer) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));
   } catch (err) {

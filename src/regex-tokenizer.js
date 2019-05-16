@@ -64,7 +64,7 @@ const NKo = /\u07C0–\u07FF/;
 const IPA_EXTENSIONS = /\u0250-\u02AF/;
 const LATIN_EXTENDED_A = /\u0100-\u017F/;
 const BASIC_LATIN_CUSTOMED = /a-zA-Z0-9_/;
-const DIACRITICAL_MARKS = /\u0300-\u036f/; // Diacritical code charts https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
+const DIACRITICAL_MARKS = /\u0300-\u036F/; // Diacritical code charts https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
 const asciiAlphaNumMappingSource = [...asciiAlphaNumMapping.keys()].join('');
 
 const ARABIC = {

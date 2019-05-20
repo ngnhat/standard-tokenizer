@@ -134,4 +134,18 @@ describe('tokenizer', () => {
   it('abc xyz 123_456 _123_456__ __123 456_', () => {
     expect(standardTokenizer('abc xyz 123_456 _123_456__ __123 456_')).toEqual(['abc', 'xyz', '123_456', '_123_456__', '__123', '456_']);
   });
+
+  it('Apostrophes', () => {
+    expect(standardTokenizer("it's21 me 213'sao  212' abc' 'ab '12 32'23")).toEqual([
+      "it's21",
+      'me',
+      '213',
+      'sao',
+      '212',
+      'abc',
+      'ab',
+      '12',
+      "32'23",
+    ]);
+  });
 });

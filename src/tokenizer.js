@@ -5,13 +5,13 @@ const SPECIAL_REGEX = /^_+$/g;
 const asciiMappingKeys = [...asciiMapping.keys()];
 const regex = new RegExp(`[${asciiMappingKeys.join('')}]`, 'ug');
 
-const asciifolding = (str = '') => (
+const asciiFolding = (str = '') => (
   str.replace(regex, character => asciiMapping.get(character) || character)
 );
 
 const asciiFoldingTokenizer = (str = '') => {
   try {
-    const folded = asciifolding(str.toLowerCase());
+    const folded = asciiFolding(str.toLowerCase());
     const tokens = folded.match(regexTokenizer) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));
@@ -33,6 +33,7 @@ const standardTokenizer = (str = '') => {
 };
 
 module.exports = {
+  asciiFolding,
   standardTokenizer,
   asciiFoldingTokenizer,
 };

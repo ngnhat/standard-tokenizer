@@ -1,4 +1,4 @@
-const asciiFolding = require('../src/ascii-folding');
+const { asciiFolding } = require('../src/tokenizer');
 
 describe('asciiFolding', () => {
   it('without argument', () => {

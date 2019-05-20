@@ -3,7 +3,8 @@
 // https://github.com/mathiasbynens/unicode-data/tree/master/10.0.0/blocks
 // https://lucene.apache.org/core/7_5_0/core/org/apache/lucene/analysis/standard/StandardTokenizer.html
 // https://github.com/mathiasbynens/unicode-12.1.0
-const asciiAlphaNumMapping = require('./alphanum-ascii-mapping');
+const numAsciiMapping = require('./num-ascii-mapping');
+const alphaAsciiMapping = require('./alpha-ascii-mapping');
 
 /**
  * SOUTHEAST ASIAN
@@ -65,7 +66,8 @@ const IPA_EXTENSIONS = /\u0250-\u02AF/;
 const LATIN_EXTENDED_A = /\u0100-\u017F/;
 const BASIC_LATIN_CUSTOMED = /a-zA-Z0-9_/;
 const DIACRITICAL_MARKS = /\u0300-\u036F/; // Diacritical code charts https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
-const asciiAlphaNumMappingSource = [...asciiAlphaNumMapping.keys()].join('');
+const numAsciiMappingSource = [...numAsciiMapping.keys()].join('');
+const alphaAsciiMappingSource = [...alphaAsciiMapping.keys()].join('');
 
 const ARABIC = {
   Standard: '\u0600-\u06FF',
@@ -113,12 +115,25 @@ const ALPHANUM = `[${[
   LATIN_EXTENDED_A.source,
   DIACRITICAL_MARKS.source,
   BASIC_LATIN_CUSTOMED.source,
-  asciiAlphaNumMappingSource,
+  alphaAsciiMappingSource,
+  numAsciiMappingSource,
 ].join('')}]+`;
 
+const numSource = `[0-9${numAsciiMappingSource}]`;
+const alphaSource = `[a-zA-Z${alphaAsciiMappingSource}]`;
+
+const NUM_APOSTROPHES = `${numSource}+(?:'${numSource}+${alphaSource}*)`;
+const ALPHA_APOSTROPHES = `${alphaSource}+(?:'${alphaSource}+${numSource}*)`;
 
 const REGEX_TOKENIZER = new RegExp(
-  [ALPHANUM, IDEOGRAPHIC, SOUTHEAST_ASIAN, JAPANESE].join('|'),
+  [
+    NUM_APOSTROPHES,
+    ALPHA_APOSTROPHES,
+    ALPHANUM,
+    IDEOGRAPHIC,
+    SOUTHEAST_ASIAN,
+    JAPANESE,
+  ].join('|'),
   'ug',
 );
 

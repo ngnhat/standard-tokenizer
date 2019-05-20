@@ -32,12 +32,12 @@ describe('standard tokenizer', () => {
     expect(standardTokenizer('äußerst')).toEqual(['äußerst']);
   });
 
-  it.skip("John's", () => {
-    expect(standardTokenizer("John's")).toEqual('John');
+  it("John's", () => {
+    expect(standardTokenizer("John's")).toEqual(["john's"]);
   });
 
-  it.skip("l'église", () => {
-    expect(standardTokenizer("l'église")).toEqual('eglis');
+  it("l'église", () => {
+    expect(standardTokenizer("l'église")).toEqual(["l'église"]);
   });
 
   it.skip('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {

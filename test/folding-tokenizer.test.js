@@ -32,12 +32,12 @@ describe('asciifolding tokenizer', () => {
     expect(asciiFoldingTokenizer('äußerst')).toEqual(['ausserst']);
   });
 
-  it.skip("John's", () => {
-    expect(asciiFoldingTokenizer("John's")).toEqual('John');
+  it("John's", () => {
+    expect(asciiFoldingTokenizer("John's")).toEqual(["john's"]);
   });
 
-  it.skip("l'église", () => {
-    expect(asciiFoldingTokenizer("l'église")).toEqual('eglis');
+  it("l'église", () => {
+    expect(asciiFoldingTokenizer("l'église")).toEqual(["l'eglise"]);
   });
 
   it.skip('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {

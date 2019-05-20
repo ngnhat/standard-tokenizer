@@ -35,8 +35,8 @@ describe('asciiFolding', () => {
     expect(asciiFolding('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual('Iлternationɑlizati߀ԉO');
   });
 
-  it.skip("John's", () => {
-    expect(asciiFolding("John's")).toEqual('John');
+  it("John's", () => {
+    expect(asciiFolding("John's")).toEqual("John's");
   });
 
   it.skip("l'église", () => {

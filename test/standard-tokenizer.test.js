@@ -148,4 +148,8 @@ describe('tokenizer', () => {
       "32'23",
     ]);
   });
+
+  it("I.B.M. 8.5 can't!!!", () => {
+    expect(standardTokenizer("I.B.M. 8.5 can't!!!")).toEqual(['i.b.m', '8.5', "can't"]);
+  });
 });

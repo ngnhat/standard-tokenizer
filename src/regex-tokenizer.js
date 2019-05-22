@@ -125,8 +125,17 @@ const alphaSource = `[a-zA-Z${alphaAsciiMappingSource}]`;
 const NUM_APOSTROPHES = `${numSource}+(?:'${numSource}+${alphaSource}*)`;
 const ALPHA_APOSTROPHES = `${alphaSource}+(?:'${alphaSource}+${numSource}*)`;
 
+const MIDNUM = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
+const MIDNUMLET = '\u002E\u2018\u2019\u2024\uFE52\uFF07\uFF0E';
+const MIDLETTER = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
+
+const NUM_WITH_MID = `${numSource}+(?:[${MIDNUM}${MIDNUMLET}]+${numSource}+)+`;
+const ALPHA_WITH_MID = `${alphaSource}+(?:[${MIDLETTER}${MIDNUMLET}]+${alphaSource}+)+`;
+
 const REGEX_TOKENIZER = new RegExp(
   [
+    NUM_WITH_MID,
+    ALPHA_WITH_MID,
     NUM_APOSTROPHES,
     ALPHA_APOSTROPHES,
     ALPHANUM,

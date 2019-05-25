@@ -40,12 +40,12 @@ describe('standard tokenizer', () => {
     expect(standardTokenizer("l'église")).toEqual(["l'église"]);
   });
 
-  it.skip('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
-    expect(standardTokenizer('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual(['iлternationɑlizati߀ԉo']);
+  it('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
+    expect(standardTokenizer('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual(['iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉo']);
   });
 
   // combodia + thai
-  it.skip('ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา', () => {
+  it('ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา', () => {
     expect(standardTokenizer('ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา')).toEqual(['ราตรีสวัสดิ์ផាសិនទឹកដោះគอันตรกิริยา']);
   });
 

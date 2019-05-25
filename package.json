@@ -10,9 +10,7 @@
   "scripts": {
     "test": "jest"
   },
-  "dependencies": {
-    "immutable": "^4.0.0-rc.12"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",

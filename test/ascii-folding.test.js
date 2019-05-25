@@ -39,7 +39,7 @@ describe('asciiFolding', () => {
     expect(asciiFolding("John's")).toEqual("John's");
   });
 
-  it.skip("l'église", () => {
-    expect(asciiFolding("l'église")).toEqual('eglis');
+  it("l'église", () => {
+    expect(asciiFolding("l'église")).toEqual("l'eglise");
   });
 });

@@ -40,7 +40,7 @@ describe('asciifolding tokenizer', () => {
     expect(asciiFoldingTokenizer("l'église")).toEqual(["l'eglise"]);
   });
 
-  it.skip('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
+  it('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO', () => {
     expect(asciiFoldingTokenizer('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')).toEqual(['iлternationɑlizati߀ԉo']);
   });
 });

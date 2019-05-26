@@ -3,8 +3,6 @@
 // https://github.com/mathiasbynens/unicode-data/tree/master/10.0.0/blocks
 // https://lucene.apache.org/core/7_5_0/core/org/apache/lucene/analysis/standard/StandardTokenizer.html
 // https://github.com/mathiasbynens/unicode-12.1.0
-const numAsciiMapping = require('./num-ascii-mapping');
-const alphaAsciiMapping = require('./alpha-ascii-mapping');
 
 /**
  * SOUTHEAST ASIAN
@@ -53,7 +51,7 @@ const JAPANESE = `[${Object.values({
   Katakana: '\u30A0-\u30FA\u30FC-\u30FF', // \u30A0-\u30FF
   Kanji_Radicals: '\u2E80-\u2FD5',
   Symbols_and_Punctuation: '\u3005-\u303D', // '[\u3000-\u303F]' TODO custom
-  Katakana_and_Punctuation_Half_Width: '\uFF66-\uFF9D', // '\uFF5F-\uFF9F'
+  Katakana_and_Punctuation_Half_Width: '\uFF66-\uFF9D', // TODO: implement halfwidth - fullwidth forms
   Miscellaneous_Symbols_Characters: '\u31F0-\u31FF\u3220-\u3243\u3280-\u337F',
 }).join('')}]`;
 
@@ -61,13 +59,35 @@ const JAPANESE = `[${Object.values({
 /**
  *  ALPHANUM
  */
-const NKo = /\u07C0–\u07FF/;
-const IPA_EXTENSIONS = /\u0250-\u02AF/;
-const LATIN_EXTENDED_A = /\u0100-\u017F/;
-const BASIC_LATIN_CUSTOMED = /a-zA-Z0-9_/;
-const DIACRITICAL_MARKS = /\u0300-\u036F/; // Diacritical code charts https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
-const numAsciiMappingSource = [...numAsciiMapping.keys()].join('');
-const alphaAsciiMappingSource = [...alphaAsciiMapping.keys()].join('');
+const nkoSource = '\u07C0–\u07FF';
+const underscoreSource = '\u005F\uFF3F';
+
+const DIACRITICAL_MARKS = {
+  Standard: '\u0300-\u036F',
+  Extended: '\u1AB0-\u1AFF',
+  Supplement: '\u1DC0-\u1DFF',
+};
+
+const LATIN_NUM = {
+  Basic_Num: '\u0030-\u0039',
+  Halfwidth_Num: '\uFF10-\uFF19',
+};
+
+const LATIN_ALPHA = {
+  Basic_Alpha: '\u0041-\u005A\u0061-\u007A',
+  Halfwidth_Alpha: '\uFF21-\uFF3A\uFF41-\uFF5A',
+  Latin_Extended_a: '\u0100-\u017F',
+  Latin_Extended_b: '\u0180-\u024F',
+  Latin_Extended_c: '\u2C60-\u2C7F',
+  Latin_Extended_d: '\uA722-\uA788\uA78B-\uA7FF',
+  Latin_Extended_e: '\uAB30-\uAB6F',
+  Extended_Additional: '\u1E00-\u1EFF',
+  Alphabetic_Presentation: '\uFB00-\uFB4F',
+  Ipa_Extensions: '\u0250-\u02AF',
+  Phonetic_Extensions: '\u1D00-\u1D7F',
+  Extensions_Supplement: '\u1D80-\u1DBF',
+  Supplement: '\u00A9\u00AA\u00AE\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF',
+};
 
 const ARABIC = {
   Standard: '\u0600-\u06FF',
@@ -98,29 +118,30 @@ const GREEK = {
   Greek_and_Coptic: '\u0370-\u03FF',
   Ancient_Greek_Numbers: '\uD800\uDD40-\uD800\uDD8F',
 };
+
 // TODO: add more languages
 
+const latinNumSource = Object.values(LATIN_NUM).join('');
+const latinAlphaSource = Object.values(LATIN_ALPHA).join('');
+const latinSource = `${underscoreSource}${latinNumSource}${latinAlphaSource}`;
 const greekSource = Object.values(GREEK).join('');
 const hangulSource = Object.values(HANGUL).join('');
 const arabicSource = Object.values(ARABIC).join('');
 const cyrillicSource = Object.values(CYRILLIC).join('');
+const diacriticalMarksSource = Object.values(DIACRITICAL_MARKS).join('');
 
 const ALPHANUM = `[${[
-  NKo.source,
+  nkoSource,
+  latinSource,
   greekSource,
   hangulSource,
   arabicSource,
   cyrillicSource,
-  IPA_EXTENSIONS.source,
-  LATIN_EXTENDED_A.source,
-  DIACRITICAL_MARKS.source,
-  BASIC_LATIN_CUSTOMED.source,
-  alphaAsciiMappingSource,
-  numAsciiMappingSource,
+  diacriticalMarksSource,
 ].join('')}]+`;
 
-const numSource = `[0-9${numAsciiMappingSource}]`;
-const alphaSource = `[a-zA-Z${alphaAsciiMappingSource}]`;
+const numSource = `[${latinNumSource}]`;
+const alphaSource = `[${latinAlphaSource}]`;
 
 const NUM_APOSTROPHES = `${numSource}+(?:'${numSource}+${alphaSource}*)`;
 const ALPHA_APOSTROPHES = `${alphaSource}+(?:'${alphaSource}+${numSource}*)`;

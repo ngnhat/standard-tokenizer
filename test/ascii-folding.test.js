@@ -42,4 +42,8 @@ describe('asciiFolding', () => {
   it("l'église", () => {
     expect(asciiFolding("l'église")).toEqual("l'eglise");
   });
+
+  it('ŞİÇÜÖĞŘ', () => {
+    expect(asciiFolding("ŞİÇÜÖĞŘ ǆƺ'ȫ")).toEqual("SICUOGR dzƺ'o");
+  });
 });

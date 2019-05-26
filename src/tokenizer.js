@@ -9,10 +9,14 @@ const asciiFolding = (str = '') => (
   str.normalize('NFC').replace(regex, character => asciiMapping.get(character) || character)
 );
 
-const asciiFoldingTokenizer = (str = '') => {
+const asciiFoldingNonNFC = (str = '') => (
+  str.replace(regex, character => asciiMapping.get(character) || character)
+);
+
+const standardTokenizer = (str = '') => {
   try {
-    const folded = asciiFolding(str.toLowerCase());
-    const tokens = folded.match(regexTokenizer) || [];
+    const strLowercased = str.normalize('NFC').toLowerCase();
+    const tokens = strLowercased.match(regexTokenizer) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));
   } catch (err) {
@@ -21,17 +25,9 @@ const asciiFoldingTokenizer = (str = '') => {
   }
 };
 
-const standardTokenizer = (_str = '') => {
-  try {
-    const str = _str.normalize('NFC');
-    const tokens = str.toLowerCase().match(regexTokenizer) || [];
-
-    return tokens.filter(token => !token.match(SPECIAL_REGEX));
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
-};
+const asciiFoldingTokenizer = (str = '') => (
+  standardTokenizer(str).map(token => asciiFoldingNonNFC(token))
+);
 
 module.exports = {
   asciiFolding,

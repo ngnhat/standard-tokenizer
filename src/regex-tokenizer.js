@@ -47,14 +47,18 @@ const IDEOGRAPHIC = Object.values({
 }).join('|');
 
 const JAPANESE = `[${Object.values({
-  Hiragana: '\u3040-\u309F', // '\u3040-\u3096\u3097-\u309F'
-  Katakana: '\u30A0-\u30FA\u30FC-\u30FF', // \u30A0-\u30FF
+  Hiragana: '\u3040-\u3096\u309D-\u309F',
   Kanji_Radicals: '\u2E80-\u2FD5',
   Symbols_and_Punctuation: '\u3005-\u303D', // '[\u3000-\u303F]' TODO custom
-  Katakana_and_Punctuation_Half_Width: '\uFF66-\uFF9D', // TODO: implement halfwidth - fullwidth forms
-  Miscellaneous_Symbols_Characters: '\u31F0-\u31FF\u3220-\u3243\u3280-\u337F',
 }).join('')}]`;
 
+const KATAKANA = `[${Object.values({
+  Standard: '\u30A0-\u30FA\u30FC-\u30FF', // \u30A0-\u30FF
+  Phonetic_Extensions: '\u31F0-\u31FF',
+  FullWidth: '\uFF66-\uFF9F',
+  Hiragana: '\u309B\u309C',
+  Enclosed_CJK: '\u32D0-\u32FE',
+}).join('')}]+`;
 
 /**
  *  ALPHANUM
@@ -111,6 +115,7 @@ const HANGUL = { // KOREAN
   Hangul_Jamo_Extended_A: '\uA960-\uA97F',
   Hangul_Jamo_Extended_B: '\uD7B0-\uD7FF',
   Hangul_Compatibility_Jamo: '\u3130-\u318F',
+  FullWidth: '\uFFA1-\uFFDC',
 };
 
 const GREEK = {
@@ -163,6 +168,7 @@ const REGEX_TOKENIZER = new RegExp(
     IDEOGRAPHIC,
     SOUTHEAST_ASIAN,
     JAPANESE,
+    KATAKANA,
   ].join('|'),
   'ug',
 );

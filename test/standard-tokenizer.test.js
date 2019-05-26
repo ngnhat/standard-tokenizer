@@ -62,10 +62,10 @@ describe('standard tokenizer', () => {
   });
 
   it('カタカナ ァヾ', () => {
-    expect(standardTokenizer('カタカナ ァヾ')).toEqual(['カ', 'タ', 'カ', 'ナ', 'ァ', 'ヾ']);
+    expect(standardTokenizer('カタカナ ァヾ')).toEqual(['カタカナ', 'ァヾ']);
   });
 
-  it.skip('一-龯ぁ-ゔゞァ-・ヽヾ゛゜ー', () => {
+  it('一-龯ぁ-ゔゞァ-・ヽヾ゛゜ー', () => {
     expect(standardTokenizer('一-龯ぁ-ゔゞァ-・ヽヾ゛゜ー')).toEqual([
       '一',
       '龯',

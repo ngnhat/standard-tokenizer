@@ -30,6 +30,7 @@ const SOUTHEAST_ASIAN = `[${Object.values({
 /**
  * IDEOGRAPHIC
  */
+// TODO:
 const IDEOGRAPHIC = Object.values({
   CJK_Unified_Ideographs: '[\u4E00-\u9FFF]',
   CJK_Unified_Ideographs_Extension_A: '[\u3400-\u4DBF]',
@@ -45,6 +46,7 @@ const IDEOGRAPHIC = Object.values({
   // CJK_Strokes: '[\u31C0-\u31EF]', none
   // CJK_Compatibility_Forms: '[\uFE30-\uFE4F]', none
 }).join('|');
+// TODO: END TODO
 
 const JAPANESE = `[${Object.values({
   Hiragana: '\u3040-\u3096\u309D-\u309F',
@@ -93,6 +95,7 @@ const LATIN_ALPHA = {
   Supplement: '\u00A9\u00AA\u00AE\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF',
 };
 
+// TODO:
 const ARABIC = {
   Standard: '\u0600-\u06FF',
   Supplement: '\u0750-\u077F',
@@ -100,6 +103,7 @@ const ARABIC = {
   Presentation_Forms_A: '\uFB50-\uFDFF',
   Presentation_Forms_B: '\uFE70-\uFEFF',
 };
+// END TODO
 
 const CYRILLIC = {
   Standard: '\u0400-\u04FF',
@@ -145,25 +149,23 @@ const ALPHANUM = `[${[
   diacriticalMarksSource,
 ].join('')}]+`;
 
-const numSource = `[${latinNumSource}]`;
-const alphaSource = `[${latinAlphaSource}]`;
+const alphaNumSource = `${latinAlphaSource}${latinNumSource}`;
 
-const NUM_APOSTROPHES = `${numSource}+(?:'${numSource}+${alphaSource}*)`;
-const ALPHA_APOSTROPHES = `${alphaSource}+(?:'${alphaSource}+${numSource}*)`;
+const singleQuote = '\u0027';
+const midNum = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
+const midNumLet = '\u002E\u2018\u2019\u2024\uFE52\uFF07\uFF0E';
+const midLetter = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
 
-const MIDNUM = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
-const MIDNUMLET = '\u002E\u2018\u2019\u2024\uFE52\uFF07\uFF0E';
-const MIDLETTER = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
+const allMidNumbers = `${singleQuote}${midNum}${midNumLet}`;
+const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 
-const NUM_WITH_MID = `${numSource}+(?:[${MIDNUM}${MIDNUMLET}]+${numSource}+)+`;
-const ALPHA_WITH_MID = `${alphaSource}+(?:[${MIDLETTER}${MIDNUMLET}]+${alphaSource}+)+`;
+const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinNumSource}](?:[${allMidNumbers}][${latinNumSource}][${alphaNumSource}]*)+`;
+const ALPHA_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinAlphaSource}](?:[${allMidLetters}][${latinAlphaSource}][${alphaNumSource}]*)+`;
 
 const REGEX_TOKENIZER = new RegExp(
   [
-    NUM_WITH_MID,
-    ALPHA_WITH_MID,
-    NUM_APOSTROPHES,
-    ALPHA_APOSTROPHES,
+    NUM_MID_OR_APOSTROPHES,
+    ALPHA_MID_OR_APOSTROPHES,
     ALPHANUM,
     IDEOGRAPHIC,
     SOUTHEAST_ASIAN,

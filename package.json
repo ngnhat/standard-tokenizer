@@ -36,9 +36,10 @@
     }
   ],
   "keywords": [
+    "standard",
+    "tokenizer",
     "asciifolding",
-    "standard tokenizer",
-    "asciifolding tokenizer"
+    "elasticsearch"
   ],
   "license": "MIT"
 }

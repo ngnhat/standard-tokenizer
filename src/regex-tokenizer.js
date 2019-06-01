@@ -95,16 +95,6 @@ const LATIN_ALPHA = {
   Supplement: '\u00A9\u00AA\u00AE\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF',
 };
 
-// TODO:
-const ARABIC = {
-  Standard: '\u0600-\u06FF',
-  Supplement: '\u0750-\u077F',
-  Extended_A: '\u08A0-\u08FF',
-  Presentation_Forms_A: '\uFB50-\uFDFF',
-  Presentation_Forms_B: '\uFE70-\uFEFF',
-};
-// END TODO
-
 const CYRILLIC = {
   Standard: '\u0400-\u04FF',
   Supplement: '\u0500-\u052F',
@@ -135,7 +125,6 @@ const latinAlphaSource = Object.values(LATIN_ALPHA).join('');
 const latinSource = `${underscoreSource}${latinNumSource}${latinAlphaSource}`;
 const greekSource = Object.values(GREEK).join('');
 const hangulSource = Object.values(HANGUL).join('');
-const arabicSource = Object.values(ARABIC).join('');
 const cyrillicSource = Object.values(CYRILLIC).join('');
 const diacriticalMarksSource = Object.values(DIACRITICAL_MARKS).join('');
 
@@ -144,7 +133,6 @@ const ALPHANUM = `[${[
   latinSource,
   greekSource,
   hangulSource,
-  arabicSource,
   cyrillicSource,
   diacriticalMarksSource,
 ].join('')}]+`;

@@ -6,7 +6,7 @@ const asciiMappingKeys = [...asciiMapping.keys()];
 const regex = new RegExp(`[${asciiMappingKeys.join('')}]`, 'ug');
 
 const asciiFolding = (str = '') => (
-  str.normalize('NFC').replace(regex, character => asciiMapping.get(character) || character)
+  str.replace(regex, character => asciiMapping.get(character) || character)
 );
 
 const asciiFoldingNonNFC = (str = '') => (
@@ -15,7 +15,7 @@ const asciiFoldingNonNFC = (str = '') => (
 
 const standardTokenizer = (str = '') => {
   try {
-    const strLowercased = str.normalize('NFC').toLowerCase();
+    const strLowercased = str.toLowerCase();
     const tokens = strLowercased.match(regexTokenizer) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));

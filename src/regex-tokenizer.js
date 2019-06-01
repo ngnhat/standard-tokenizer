@@ -42,7 +42,7 @@ const IDEOGRAPHIC = Object.values({
   CJK_Radicals_Supplement: '[\u2E80-\u2EFF]', // [\u2E80-\u2FD5]
   CJK_Compatibility_Ideographs_Supplement: '\uD87E[\uDC00-\uDE1F]',
   CJK_Compatibility_Ideographs: '[\uF900-\uFAFF]',
-  CJK_Compatibility: '[\u3300-\u33FF]',
+  // CJK_Compatibility: '[\u3300-\u33FF]', none
   // CJK_Strokes: '[\u31C0-\u31EF]', none
   // CJK_Compatibility_Forms: '[\uFE30-\uFE4F]', none
 }).join('|');
@@ -57,9 +57,10 @@ const JAPANESE = `[${Object.values({
 const KATAKANA = `[${Object.values({
   Standard: '\u30A0-\u30FA\u30FC-\u30FF', // \u30A0-\u30FF
   Phonetic_Extensions: '\u31F0-\u31FF',
-  FullWidth: '\uFF66-\uFF9F',
+  FullWidth: '\uFF66-\uFF9D',
   Hiragana: '\u309B\u309C',
   Enclosed_CJK: '\u32D0-\u32FE',
+  CJK_Compatibility: '\u3300-\u3357',
 }).join('')}]+`;
 
 /**

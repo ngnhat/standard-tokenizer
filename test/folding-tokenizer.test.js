@@ -77,4 +77,8 @@ describe('tokenizer', () => {
   it('abc xyz 123_456 _123_456__ __123 456_', () => {
     expect(asciiFoldingTokenizer('abc xyz 123_456 _123_456__ __123 456_')).toEqual(['abc', 'xyz', '123_456', '_123_456__', '__123', '456_']);
   });
+
+  it('Ⓐⓩ', () => {
+    expect(asciiFoldingTokenizer('Ⓐⓩ')).toEqual(['az']);
+  });
 });

@@ -94,6 +94,7 @@ const LATIN_ALPHA = {
   Phonetic_Extensions: '\u1D00-\u1D7F',
   Extensions_Supplement: '\u1D80-\u1DBF',
   Supplement: '\u00A9\u00AA\u00AE\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF',
+  Enclosed_Alphanumerics: '\u24B6-\u24E9',
 };
 
 const CYRILLIC = {

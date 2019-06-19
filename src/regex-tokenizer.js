@@ -16,7 +16,7 @@ const MYANMAR = {
 const SOUTHEAST_ASIAN = `[${Object.values({
   LAO: '\u0E80-\u0EFF',
   AHOM: '\uDF00-\uDF3F',
-  THAI: '\u0E00-\u0E7F',
+  THAI: '\u0E00-\u0E4E', // NUMBER: 0E50-0E59
   KHMER: '\u1780-\u17FF',
   TAI_LE: '\u1980-\u19DF',
   TAI_VIET: '\uAA80-\uAADF',
@@ -78,6 +78,10 @@ const DIACRITICAL_MARKS = {
 const LATIN_NUM = {
   Basic_Num: '\u0030-\u0039',
   Halfwidth_Num: '\uFF10-\uFF19',
+  Thai_Num: '\u0E50-\u0E59',
+  Arabic_Num: '\u0660-\u0669',
+  Bengali_Num: '\u09e6-\u09ef',
+  Malayalam_Num: '\u0d66-\u0D6F',
 };
 
 const LATIN_ALPHA = {

@@ -151,4 +151,20 @@ describe('tokenizer', () => {
   it('Ⓐⓩ', () => {
     expect(standardTokenizer('Ⓐⓩ')).toEqual(['ⓐⓩ']);
   });
+
+  it('abc123๐๑๒๓๔๕๖๗๘๙abc', () => {
+    expect(standardTokenizer('abc123๐๑๒๓๔๕๖๗๘๙abc')).toEqual(['abc123๐๑๒๓๔๕๖๗๘๙abc']);
+  });
+
+  it('abc٠١٢٣٤٥٦٧٨٩13', () => {
+    expect(standardTokenizer('abc٠١٢٣٤٥٦٧٨٩13')).toEqual(['abc٠١٢٣٤٥٦٧٨٩13']);
+  });
+
+  it('abc০১২৩৪৫৬৭৮৯123', () => {
+    expect(standardTokenizer('abc০১২৩৪৫৬৭৮৯123')).toEqual(['abc০১২৩৪৫৬৭৮৯123']);
+  });
+
+  it('13bac൦൧൨൩൪൫൬൭൮൯', () => {
+    expect(standardTokenizer('13bac൦൧൨൩൪൫൬൭൮൯')).toEqual(['13bac൦൧൨൩൪൫൬൭൮൯']);
+  });
 });

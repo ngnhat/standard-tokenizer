@@ -1,4 +1,4 @@
-# tokenizers
+# elasticsearch tokenizers
 
     const { standardTokenizer } = require('tokenizers');
     const tokens = standardTokenizer("Düsseldorf, Köln, Москва, 北京市, !@#$");

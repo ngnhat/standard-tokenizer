@@ -9,10 +9,6 @@ const asciiFolding = (str = '') => (
   str.replace(regex, character => asciiMapping.get(character) || character)
 );
 
-const asciiFoldingNonNFC = (str = '') => (
-  str.replace(regex, character => asciiMapping.get(character) || character)
-);
-
 const standardTokenizer = (str = '') => {
   try {
     const strLowercased = str.toLowerCase();
@@ -26,7 +22,7 @@ const standardTokenizer = (str = '') => {
 };
 
 const asciiFoldingTokenizer = (str = '') => (
-  standardTokenizer(str).map(token => asciiFoldingNonNFC(token))
+  standardTokenizer(asciiFolding(str))
 );
 
 module.exports = {

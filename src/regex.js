@@ -169,4 +169,20 @@ const TOKENIZER_REGEX = new RegExp(
   'ug',
 );
 
-module.exports = TOKENIZER_REGEX;
+const LETTER_REGEX = `[${[
+  nkoSource,
+  latinAlphaSource,
+  greekSource,
+  hangulSource,
+  cyrillicSource,
+  diacriticalMarksSource,
+  IDEOGRAPHIC,
+  SOUTHEAST_ASIAN,
+  JAPANESE,
+  KATAKANA,
+].join('')}]`;
+
+module.exports = {
+  LETTER_REGEX,
+  TOKENIZER_REGEX,
+};

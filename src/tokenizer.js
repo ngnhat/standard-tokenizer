@@ -1,5 +1,8 @@
 const asciiMapping = require('./ascii-mapping');
-const tokenizerRegex = require('./tokenizer-regex');
+const { TOKENIZER_REGEX, LETTER_REGEX } = require('./regex');
+
+// TODO: update ngram/edge-ngram function
+console.log('LETTER_REGEX', LETTER_REGEX);
 
 const SPECIAL_REGEX = /^_+$/g;
 const asciiMappingKeys = [...asciiMapping.keys()];
@@ -12,7 +15,7 @@ const asciiFolding = (str = '') => (
 const standardTokenizer = (str = '') => {
   try {
     const strLowercased = `${str}`.toLowerCase();
-    const tokens = strLowercased.match(tokenizerRegex) || [];
+    const tokens = strLowercased.match(TOKENIZER_REGEX) || [];
 
     return tokens.filter(token => !token.match(SPECIAL_REGEX));
   } catch (err) {

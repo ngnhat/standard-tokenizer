@@ -156,7 +156,7 @@ const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinNumSource}](?:[${allMidNumbers}][${latinNumSource}][${alphaNumSource}]*)+`;
 const ALPHA_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinAlphaSource}](?:[${allMidLetters}][${latinAlphaSource}][${alphaNumSource}]*)+`;
 
-const REGEX_TOKENIZER = new RegExp(
+const TOKENIZER_REGEX = new RegExp(
   [
     NUM_MID_OR_APOSTROPHES,
     ALPHA_MID_OR_APOSTROPHES,
@@ -169,4 +169,4 @@ const REGEX_TOKENIZER = new RegExp(
   'ug',
 );
 
-module.exports = REGEX_TOKENIZER;
+module.exports = TOKENIZER_REGEX;

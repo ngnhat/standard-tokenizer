@@ -75,7 +75,7 @@ const DIACRITICAL_MARKS = {
   Supplement: '\u1DC0-\u1DFF',
 };
 
-const LATIN_NUM = {
+const DIGIT = {
   Basic_Num: '\u0030-\u0039',
   Halfwidth_Num: '\uFF10-\uFF19',
   Thai_Num: '\u0E50-\u0E59',
@@ -126,9 +126,9 @@ const GREEK = {
 
 // TODO: add more languages
 
-const latinNumSource = Object.values(LATIN_NUM).join('');
+const digitSource = Object.values(DIGIT).join('');
 const latinAlphaSource = Object.values(LATIN_ALPHA).join('');
-const latinSource = `${underscoreSource}${latinNumSource}${latinAlphaSource}`;
+const latinSource = `${underscoreSource}${digitSource}${latinAlphaSource}`;
 const greekSource = Object.values(GREEK).join('');
 const hangulSource = Object.values(HANGUL).join('');
 const cyrillicSource = Object.values(CYRILLIC).join('');
@@ -143,7 +143,7 @@ const ALPHANUM = `[${[
   diacriticalMarksSource,
 ].join('')}]+`;
 
-const alphaNumSource = `${latinAlphaSource}${latinNumSource}`;
+const alphaNumSource = `${latinAlphaSource}${digitSource}`;
 
 const singleQuote = '\u0027';
 const midNum = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
@@ -153,7 +153,7 @@ const midLetter = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
 const allMidNumbers = `${singleQuote}${midNum}${midNumLet}`;
 const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 
-const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinNumSource}](?:[${allMidNumbers}][${latinNumSource}][${alphaNumSource}]*)+`;
+const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${digitSource}](?:[${allMidNumbers}][${digitSource}][${alphaNumSource}]*)+`;
 const ALPHA_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinAlphaSource}](?:[${allMidLetters}][${latinAlphaSource}][${alphaNumSource}]*)+`;
 
 const TOKENIZER_REGEX = new RegExp(
@@ -183,6 +183,7 @@ const LETTER_REGEX = `[${[
 ].join('')}]`;
 
 module.exports = {
-  LETTER_REGEX,
   TOKENIZER_REGEX,
+  LETTER_REGEX,
+  DIGIT_REGEX: digitSource,
 };

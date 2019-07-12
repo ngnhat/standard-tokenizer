@@ -1,7 +1,8 @@
 const asciiMapping = require('./ascii-mapping');
-const { TOKENIZER_REGEX, LETTER_REGEX } = require('./regex');
+const { TOKENIZER_REGEX, LETTER_REGEX, DIGIT_REGEX } = require('./regex');
 
 // TODO: update ngram/edge-ngram function
+console.log('DIGIT_REGEX', DIGIT_REGEX);
 console.log('LETTER_REGEX', LETTER_REGEX);
 
 const SPECIAL_REGEX = /^_+$/g;

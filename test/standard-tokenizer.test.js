@@ -13,6 +13,11 @@ describe('standard tokenizer', () => {
     expect(standardTokenizer('Is this déjà vu?')).toEqual(['is', 'this', 'déjà', 'vu']);
   });
 
+  it('صفحة أسيا أما بـ, حيث.', () => {
+    expect(standardTokenizer('صفحة أسيا أما بـ, حيث.'))
+      .toEqual(['صفحة', 'أسيا', 'أما', 'بـ', 'حيث']);
+  });
+
   it('My œsophagus caused a débâcle', () => {
     expect(standardTokenizer('My œsophagus caused a débâcle'))
       .toEqual(['my', 'œsophagus', 'caused', 'a', 'débâcle']);

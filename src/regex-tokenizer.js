@@ -1,72 +1,83 @@
 // http://www.unicode.org/charts
 // http://www.unicode.org/Public/12.0.0/ucd/LineBreak.txt
-// https://github.com/mathiasbynens/unicode-data/tree/master/10.0.0/blocks
 // https://lucene.apache.org/core/7_5_0/core/org/apache/lucene/analysis/standard/StandardTokenizer.html
-// https://github.com/mathiasbynens/unicode-12.1.0
 
 /**
  * SOUTHEAST ASIAN
  */
-const MYANMAR = {
-  Standard: '\u1000-\u109F',
-  Myanmar_Extended_A: '\uA9E0-\uA9FF',
-  Myanmar_Extended_B: '\uAA60-\uAA7F',
-};
+const MYANMAR = Object.values({
+  Standard: '\u1000-\u103F\u104A-\u108F\u109A-\u109F',
+  Myanmar_Extended_A: '\uAA60-\uAA7F',
+  Myanmar_Extended_B: '\uA9E0-\uA9EF\uA9FA-\uA9FF',
+}).join('');
 
-const SOUTHEAST_ASIAN = `[${Object.values({
-  LAO: '\u0E80-\u0EFF',
+const MYANMAR_DIGIT = Object.values({
+  Digits: '\u1040-\u1049',
+  Shan_Digits: '\u1090-\u1099',
+  Tai_Laing_Digits: '\uA9F0-\uA9F9',
+}).join('');
+
+const SOUTHEAST_ASIAN_REGEX = Object.values({
+  MYANMAR,
   AHOM: '\uDF00-\uDF3F',
-  THAI: '\u0E00-\u0E4E', // NUMBER: 0E50-0E59
-  KHMER: '\u1780-\u17FF',
-  TAI_LE: '\u1980-\u19DF',
+  THAI: '\u0E00-\u0E4E',
+  TAI_LE: '\u1950-\u197F',
   TAI_VIET: '\uAA80-\uAADF',
-  TAI_THAM: '\u1A20-\u1AAF',
-  NEW_TAI_LUE: '\u1950-\u197F',
-  TAI_XUAN_JING: '\uD834\uDF00-\uD834\uDF5F',
-  MYANMAR: Object.values(MYANMAR).join(''),
-}).join('')}]+`;
+  KAYAH_LI: '\uA90A-\uA92F',
+  NEW_TAI_LUE: '\u1980-\u19DF',
+  LAO: '\u0E80-\u0ECF\u0EDA-\u0EFF',
+  CHAM: '\uAA00-\uAA4F\uAA5A-\uAA5F',
+  PAU_CIN_HAU: '\u{11AC0}-\u{11AFF}',
+  KHMER: '\u1780-\u17DF\u17EA-\u17FF',
+  TAI_THAM: '\u1A20-\u1A7F\u1A9A-\u1AAF',
+  PAHAWH_HMONG: '\u{16B00}-\u{16B4F}\u{16B5A}-\u{16B8F}',
+}).join('');
+const SOUTHEAST_ASIAN = `[${SOUTHEAST_ASIAN_REGEX}]+`;
 
 
 /**
  * IDEOGRAPHIC
  */
-// TODO:
-const IDEOGRAPHIC = Object.values({
-  CJK_Unified_Ideographs: '[\u4E00-\u9FFF]',
-  CJK_Unified_Ideographs_Extension_A: '[\u3400-\u4DBF]',
-  CJK_Unified_Ideographs_Extension_B: '[\uD840-\uD868][\uDC00-\uDFFF]|\uD869[\uDC00-\uDEDF]',
-  CJK_Unified_Ideographs_Extension_C: '\uD869[\uDF00-\uDFFF]|[\uD86A-\uD86C][\uDC00-\uDFFF]|\uD86D[\uDC00-\uDF3F]',
-  CJK_Unified_Ideographs_Extension_D: '\uD86D[\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1F]',
-  CJK_Unified_Ideographs_Extension_E: '\uD86E[\uDC20-\uDFFF]|[\uD86F-\uD872][\uDC00-\uDFFF]|\uD873[\uDC00-\uDEAF]',
-  CJK_Unified_Ideographs_Extension_F: '\uD873[\uDEB0-\uDFFF]|[\uD874-\uD879][\uDC00-\uDFFF]|\uD87A[\uDC00-\uDFEF]',
-  CJK_Radicals_Supplement: '[\u2E80-\u2EFF]', // [\u2E80-\u2FD5]
-  CJK_Compatibility_Ideographs_Supplement: '\uD87E[\uDC00-\uDE1F]',
-  CJK_Compatibility_Ideographs: '[\uF900-\uFAFF]',
-  // CJK_Compatibility: '[\u3300-\u33FF]', none
-  // CJK_Strokes: '[\u31C0-\u31EF]', none
-  // CJK_Compatibility_Forms: '[\uFE30-\uFE4F]', none
-}).join('|');
-// TODO: END TODO
+const IDEOGRAPHIC_REGEX = Object.values({
+  CJK_Unified_Ideographs: '\u4E00-\u9FFF',
+  CJK_Unified_Ideographs_Extension_A: '\u3400-\u4DBF',
+  CJK_Unified_Ideographs_Extension_B: '\u{20000}-\u{2A6D6}',
+  CJK_Unified_Ideographs_Extension_C: '\u{2A700}-\u{2B734}',
+  CJK_Unified_Ideographs_Extension_D: '\u{2B740}-\u{2B81D}',
+  CJK_Unified_Ideographs_Extension_E: '\u{2B820}-\u{2CEA1}',
+  CJK_Unified_Ideographs_Extension_F: '\u{2CEB0}-\u{2EBE0}',
+  CJK_Compatibility_Ideographs_Supplement: '\u{2F800}-\u{2FA1F}',
+  CJK_Compatibility_Ideographs: '\uF900-\uFAFF',
+  CJK_Radicals_Supplement: '\u2E80-\u2EFF',
+  // CJK_Strokes: '\u31C0-\u31EF', none
+  // CJK_Compatibility: '\u3300-\u33FF', none
+  // CJK_Compatibility_Forms: '\uFE30-\uFE4F', none
+  // CJK_Description_Characters: '\u2FF0-\u2FFF', none
+}).join('');
+const IDEOGRAPHIC = `[${IDEOGRAPHIC_REGEX}]`;
 
-const JAPANESE = `[${Object.values({
+const JAPANESE_REGEX = Object.values({
   Hiragana: '\u3040-\u3096\u309D-\u309F',
   Kanji_Radicals: '\u2E80-\u2FD5',
-  Symbols_and_Punctuation: '\u3005-\u303D', // '[\u3000-\u303F]' TODO custom
-}).join('')}]`;
+  Symbols_and_Punctuation: '\u3005\u3007\u3021-\u3029\u3030-\u3035\u3038-\u303A\u303D',
+}).join('');
+const JAPANESE = `[${JAPANESE_REGEX}]`;
 
-const KATAKANA = `[${Object.values({
-  Standard: '\u30A0-\u30FA\u30FC-\u30FF', // \u30A0-\u30FF
+const KATAKANA_REGEX = Object.values({
+  Standard: '\u30A0-\u30FA\u30FC-\u30FF',
   Phonetic_Extensions: '\u31F0-\u31FF',
   FullWidth: '\uFF66-\uFF9D',
   Hiragana: '\u309B\u309C',
   Enclosed_CJK: '\u32D0-\u32FE',
   CJK_Compatibility: '\u3300-\u3357',
-}).join('')}]+`;
+}).join('');
+
+const KATAKANA = `[${KATAKANA_REGEX}]+`;
 
 /**
  *  ALPHANUM
  */
-const nkoSource = '\u07C0–\u07FF';
+const nkoSource = '\u07CA-\u07F5\u07FA\u07FD';
 const underscoreSource = '\u005F\uFF3F';
 
 const DIACRITICAL_MARKS = {
@@ -75,13 +86,23 @@ const DIACRITICAL_MARKS = {
   Supplement: '\u1DC0-\u1DFF',
 };
 
-const LATIN_NUM = {
-  Basic_Num: '\u0030-\u0039',
-  Halfwidth_Num: '\uFF10-\uFF19',
-  Thai_Num: '\u0E50-\u0E59',
-  Arabic_Num: '\u0660-\u0669',
-  Bengali_Num: '\u09e6-\u09ef',
-  Malayalam_Num: '\u0d66-\u0D6F',
+const DIGIT = {
+  Basic_Digits: '\u0030-\u0039',
+  Lao_Digits: '\u0ED0-\u0ED9',
+  Nko_Digits: '\u07C0-\u07C9',
+  Thai_Digits: '\u0E50-\u0E59',
+  Cham_Digits: '\uAA50-\uAA59',
+  Khmer_Digits: '\u17E0-\u17E9',
+  Bengali_Digits: '\u09e6-\u09ef',
+  Kayah_Li_Digits: '\uA900-\uA909',
+  Tai_Tham_Digits: '\u1A90-\u1A99',
+  Halfwidth_Digits: '\uFF10-\uFF19',
+  Malayalam_Digits: '\u0d66-\u0D6F',
+  Tai_Tham_Hora_Digits: '\u1A80-\u1A89',
+  Pahawh_Hmong_Digits: '\u{16B50}-\u{16B59}',
+  Arabic_Digits: '\u0660-\u0669\u06F0-\u06F9',
+  CJK_Symbols_and_Punctuation: '\u303B\u303C', // TODO
+  Myanmar_Digits: MYANMAR_DIGIT,
 };
 
 const LATIN_ALPHA = {
@@ -119,17 +140,27 @@ const HANGUL = { // KOREAN
 };
 
 const GREEK = {
-  Greek_Extended: '\u1F00-\u1FFF',
-  Greek_and_Coptic: '\u0370-\u03FF',
-  Ancient_Greek_Numbers: '\uD800\uDD40-\uD800\uDD8F',
+  Greek_Extended: '\u1F00-\u1FFF', // TODO
+  Greek_and_Coptic: '\u0370-\u037D\u037F-\u03FF',
+  Ancient_Greek_Numbers: '\u{10140}-\u{10174}',
+};
+
+const ARABIC = {
+  Standard: '\u0600-\u0605\u060E-\u061A\u0620-\u065F\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06EF\u06FA-\u06FC\u06FF',
+  Supplement: '\u0750-\u077F',
+  Extended_A: '\u08A0-\u08FF',
+  Presentation_Forms_A: '\uFB50-\uFBB1\uFBD3-\uFD3D\uFD50-\uFDFB',
+  Presentation_Forms_B: '\uFE70-\uFEFF',
+  Mathematical_Alphabetic_Symbols: '\u{1EE00}-\u{1EEFF}',
 };
 
 // TODO: add more languages
 
-const latinNumSource = Object.values(LATIN_NUM).join('');
+const digitSource = Object.values(DIGIT).join('');
 const latinAlphaSource = Object.values(LATIN_ALPHA).join('');
-const latinSource = `${underscoreSource}${latinNumSource}${latinAlphaSource}`;
+const latinSource = `${underscoreSource}${digitSource}${latinAlphaSource}`;
 const greekSource = Object.values(GREEK).join('');
+const arabicSource = Object.values(ARABIC).join('');
 const hangulSource = Object.values(HANGUL).join('');
 const cyrillicSource = Object.values(CYRILLIC).join('');
 const diacriticalMarksSource = Object.values(DIACRITICAL_MARKS).join('');
@@ -138,12 +169,13 @@ const ALPHANUM = `[${[
   nkoSource,
   latinSource,
   greekSource,
+  arabicSource,
   hangulSource,
   cyrillicSource,
   diacriticalMarksSource,
 ].join('')}]+`;
 
-const alphaNumSource = `${latinAlphaSource}${latinNumSource}`;
+const alphaNumSource = `${latinAlphaSource}${digitSource}`;
 
 const singleQuote = '\u0027';
 const midNum = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
@@ -153,10 +185,10 @@ const midLetter = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
 const allMidNumbers = `${singleQuote}${midNum}${midNumLet}`;
 const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 
-const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinNumSource}](?:[${allMidNumbers}][${latinNumSource}][${alphaNumSource}]*)+`;
+const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${digitSource}](?:[${allMidNumbers}][${digitSource}][${alphaNumSource}]*)+`;
 const ALPHA_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinAlphaSource}](?:[${allMidLetters}][${latinAlphaSource}][${alphaNumSource}]*)+`;
 
-const REGEX_TOKENIZER = new RegExp(
+const TOKENIZER_REGEX = new RegExp(
   [
     NUM_MID_OR_APOSTROPHES,
     ALPHA_MID_OR_APOSTROPHES,
@@ -169,4 +201,22 @@ const REGEX_TOKENIZER = new RegExp(
   'ug',
 );
 
-module.exports = REGEX_TOKENIZER;
+const LETTER_REGEX = [
+  nkoSource,
+  latinAlphaSource,
+  greekSource,
+  arabicSource,
+  hangulSource,
+  cyrillicSource,
+  diacriticalMarksSource,
+  SOUTHEAST_ASIAN_REGEX,
+  IDEOGRAPHIC_REGEX,
+  JAPANESE_REGEX,
+  KATAKANA_REGEX,
+].join('');
+
+module.exports = {
+  TOKENIZER_REGEX,
+  LETTER_REGEX,
+  DIGIT_REGEX: digitSource,
+};

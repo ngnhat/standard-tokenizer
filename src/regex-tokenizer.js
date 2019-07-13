@@ -86,7 +86,7 @@ const DIACRITICAL_MARKS = {
   Supplement: '\u1DC0-\u1DFF',
 };
 
-const DIGIT = {
+const DIGIT_REGEX = Object.values({
   Basic_Digits: '\u0030-\u0039',
   Lao_Digits: '\u0ED0-\u0ED9',
   Nko_Digits: '\u07C0-\u07C9',
@@ -103,7 +103,7 @@ const DIGIT = {
   Arabic_Digits: '\u0660-\u0669\u06F0-\u06F9',
   CJK_Symbols_and_Punctuation: '\u303B\u303C', // TODO
   Myanmar_Digits: MYANMAR_DIGIT,
-};
+}).join('');
 
 const LATIN_ALPHA = {
   Basic_Alpha: '\u0041-\u005A\u0061-\u007A',
@@ -156,9 +156,8 @@ const ARABIC = {
 
 // TODO: add more languages
 
-const digitSource = Object.values(DIGIT).join('');
 const latinAlphaSource = Object.values(LATIN_ALPHA).join('');
-const latinSource = `${underscoreSource}${digitSource}${latinAlphaSource}`;
+const latinSource = `${underscoreSource}${DIGIT_REGEX}${latinAlphaSource}`;
 const greekSource = Object.values(GREEK).join('');
 const arabicSource = Object.values(ARABIC).join('');
 const hangulSource = Object.values(HANGUL).join('');
@@ -175,7 +174,7 @@ const ALPHANUM = `[${[
   diacriticalMarksSource,
 ].join('')}]+`;
 
-const alphaNumSource = `${latinAlphaSource}${digitSource}`;
+const alphaNumSource = `${latinAlphaSource}${DIGIT_REGEX}`;
 
 const singleQuote = '\u0027';
 const midNum = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
@@ -185,7 +184,7 @@ const midLetter = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
 const allMidNumbers = `${singleQuote}${midNum}${midNumLet}`;
 const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 
-const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${digitSource}](?:[${allMidNumbers}][${digitSource}][${alphaNumSource}]*)+`;
+const NUM_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${DIGIT_REGEX}](?:[${allMidNumbers}][${DIGIT_REGEX}][${alphaNumSource}]*)+`;
 const ALPHA_MID_OR_APOSTROPHES = `[${alphaNumSource}]*[${latinAlphaSource}](?:[${allMidLetters}][${latinAlphaSource}][${alphaNumSource}]*)+`;
 
 const TOKENIZER_REGEX = new RegExp(
@@ -193,10 +192,10 @@ const TOKENIZER_REGEX = new RegExp(
     NUM_MID_OR_APOSTROPHES,
     ALPHA_MID_OR_APOSTROPHES,
     ALPHANUM,
-    IDEOGRAPHIC,
     SOUTHEAST_ASIAN,
-    JAPANESE,
     KATAKANA,
+    JAPANESE,
+    IDEOGRAPHIC,
   ].join('|'),
   'ug',
 );
@@ -215,8 +214,11 @@ const LETTER_REGEX = [
   KATAKANA_REGEX,
 ].join('');
 
+const WHITESPACE_REGEX = '\u0020\u2000-\u200A';
+
 module.exports = {
-  TOKENIZER_REGEX,
+  DIGIT_REGEX,
   LETTER_REGEX,
-  DIGIT_REGEX: digitSource,
+  TOKENIZER_REGEX,
+  WHITESPACE_REGEX,
 };

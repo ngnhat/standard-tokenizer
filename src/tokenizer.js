@@ -1,13 +1,23 @@
 const asciiMapping = require('./ascii-mapping');
-const { TOKENIZER_REGEX, LETTER_REGEX, DIGIT_REGEX } = require('./regex-tokenizer');
+const { TOKENIZER_REGEX, LETTER_REGEX, DIGIT_REGEX, WHITESPACE_REGEX } = require('./regex-tokenizer');
 
 const SPECIAL_REGEX = /^_+$/g;
 const asciiMappingKeys = [...asciiMapping.keys()];
 const asciiRegex = new RegExp(`[${asciiMappingKeys.join('')}]`, 'ug');
 
+const CHARS_MAPPING = {
+  digit: DIGIT_REGEX,
+  letter: LETTER_REGEX,
+  whitespace: WHITESPACE_REGEX,
+};
+
 const asciiFolding = (str = '') => (
   str.replace(asciiRegex, character => asciiMapping.get(character) || character)
 );
+
+const FILER_MAPPING = {
+  asciifolding: asciiFolding,
+};
 
 const standardTokenizer = (str = '') => {
   try {
@@ -24,15 +34,6 @@ const standardTokenizer = (str = '') => {
 const asciiFoldingTokenizer = (str = '') => (
   standardTokenizer(asciiFolding(str))
 );
-
-const CHARS_MAPPING = {
-  digit: DIGIT_REGEX,
-  letter: LETTER_REGEX,
-};
-
-const FILER_MAPPING = {
-  asciifolding: asciiFolding,
-};
 
 const filterFunc = (str = '', filters = []) => {
   try {

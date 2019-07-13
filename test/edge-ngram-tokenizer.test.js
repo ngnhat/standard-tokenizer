@@ -3,7 +3,7 @@
  */
 const { edgeNGramTokenizerCreater } = require('../src/tokenizer');
 
-describe('standard ngram tokenizer', () => {
+describe('standard edge-ngram tokenizer', () => {
   const standardEdgeNGramTokenizer = edgeNGramTokenizerCreater({
     min: 2,
     max: 10,
@@ -42,7 +42,7 @@ describe('standard ngram tokenizer', () => {
 });
 
 
-describe('asciifolding ngram tokenizer', () => {
+describe('asciifolding edge-ngram tokenizer', () => {
   const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreater({
     min: 2,
     max: 10,
@@ -64,6 +64,29 @@ describe('asciifolding ngram tokenizer', () => {
       'nam',
       'de',
       'cu',
+    ]);
+  });
+});
+
+describe('whitespace edge-ngram tokenizer', () => {
+  const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreater({
+    min: 2,
+    max: 10,
+    filters: ['asciifolding'],
+    tokenChars: ['letter', 'digit', 'whitespace'],
+  });
+
+  it('Nam quốc sơn hà Nam đế cư', () => {
+    expect(asciifoldingEdgeNGramTokenizer('Nam quốc sơn hà Nam đế cư')).toEqual([
+      'na',
+      'nam',
+      'nam ',
+      'nam q',
+      'nam qu',
+      'nam quo',
+      'nam quoc',
+      'nam quoc ',
+      'nam quoc s',
     ]);
   });
 });

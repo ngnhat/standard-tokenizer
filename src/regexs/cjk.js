@@ -15,6 +15,8 @@ const CJK_SYMBOL = Object.values({
   CJK_Compatibility: '\u3358-\u33FF',
   CJK_Description_Characters: '\u2FF0-\u2FFF',
   Enclosed_CJK: '\u3200-\u3247\u3250\u3260-\u32B0\u32C0-\u32CF\u32FF',
+  Enclosed_Ideographic_Supplement: '\u{1F200}-\u{1F202}\u{1F210}-\u{1F23B}\u{1F240}-\u{1F248}\u{1F250}\u{1F251}\u{1F260}-\u{1F265}',
+  Letterlike_Symbols: '\u{2100}-\u{214F}',
 }).join('');
 
 const CJK_PUNCTUATION = Object.values({

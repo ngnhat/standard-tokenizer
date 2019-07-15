@@ -1,5 +1,12 @@
 const asciiMapping = require('./ascii-mapping');
-const { TOKENIZER_REGEX, LETTER_REGEX, DIGIT_REGEX, WHITESPACE_REGEX } = require('./regex-tokenizer');
+const {
+  DIGIT_REGEX,
+  LETTER_REGEX,
+  SYMBOL_REGEX,
+  TOKENIZER_REGEX,
+  WHITESPACE_REGEX,
+  PUNCTUATION_REGEX,
+} = require('./regex-tokenizer');
 
 const SPECIAL_REGEX = /^_+$/g;
 const asciiMappingKeys = [...asciiMapping.keys()];
@@ -9,6 +16,8 @@ const CHARS_MAPPING = {
   digit: DIGIT_REGEX,
   letter: LETTER_REGEX,
   whitespace: WHITESPACE_REGEX,
+  symbol: SYMBOL_REGEX,
+  punctuation: PUNCTUATION_REGEX,
 };
 
 const asciiFolding = (str = '') => (
@@ -133,7 +142,12 @@ const gramValidation = (parameters) => {
 
 const nGramTokenizerCreater = parameters => (_str = '') => {
   gramValidation(parameters);
-  const { min, max, filters = [], tokenChars = [] } = parameters;
+  const {
+    min,
+    max,
+    filters = [],
+    tokenChars = [],
+  } = parameters;
   const str = filterFunc(_str, filters);
 
   return gramTokenizer(str, tokenChars)
@@ -145,7 +159,12 @@ const nGramTokenizerCreater = parameters => (_str = '') => {
 
 const edgeNGramTokenizerCreater = parameters => (_str = '') => {
   gramValidation(parameters);
-  const { min, max, filters = [], tokenChars = [] } = parameters;
+  const {
+    min,
+    max,
+    filters = [],
+    tokenChars = [],
+  } = parameters;
   const str = filterFunc(_str, filters);
 
   return gramTokenizer(str, tokenChars).reduce((accTerms, term) => ([

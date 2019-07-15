@@ -1,14 +1,44 @@
 // http://www.unicode.org/charts
 // http://www.unicode.org/Public/12.0.0/ucd/LineBreak.txt
 // https://lucene.apache.org/core/7_5_0/core/org/apache/lucene/analysis/standard/StandardTokenizer.html
-const { GREEK_LETTER } = require('./regexs/greek');
-const { CYRILLIC_LETTER } = require('./regexs/cyrillic');
-const { NKO_DIGIT, NKO_LETTER } = require('./regexs/nko');
-const { LATIN_LETTER, LATIN_DIGIT } = require('./regexs/latin');
+const { MUSICAL_SYMBOL } = require('./regexs/musical');
 const DIACRITICAL_MARKS = require('./regexs/diacritical_marks');
-const { ARABIC_DIGIT, ARABIC_LETTER } = require('./regexs/arabic');
-const { SOUTHEAST_ASIAN_DIGIT, SOUTHEAST_ASIAN_LETTER } = require('./regexs/southeast_asian');
-const { CJK_DIGIT, IDEOGRAPHIC_LETTER, JAPANESE_LETTER, KATAKANA_LETTER, HANGUL_LETTER, CJK_ALPHANUM } = require('./regexs/cjk');
+const { CYRILLIC_LETTER, CYRILLIC_PUNCTUATION } = require('./regexs/cyrillic');
+const { GREEK_LETTER, GREEK_SYMBOL, GREEK_PUNCTUATION } = require('./regexs/greek');
+const {
+  NKO_DIGIT,
+  NKO_LETTER,
+  NKO_SYMBOL,
+  NKO_PUNCTUATION,
+} = require('./regexs/nko');
+const {
+  LATIN_DIGIT,
+  LATIN_LETTER,
+  LATIN_SYMBOL,
+  LATIN_PUNCTUATION,
+} = require('./regexs/latin');
+const {
+  ARABIC_DIGIT,
+  ARABIC_LETTER,
+  ARABIC_SYMBOL,
+  ARABIC_PUNCTUATION,
+} = require('./regexs/arabic');
+const {
+  SOUTHEAST_ASIAN_DIGIT,
+  SOUTHEAST_ASIAN_LETTER,
+  SOUTHEAST_ASIAN_SYMBOL,
+  SOUTHEAST_ASIAN_PUNCTUATION,
+} = require('./regexs/southeast_asian');
+const {
+  CJK_DIGIT,
+  CJK_SYMBOL,
+  CJK_ALPHANUM,
+  HANGUL_LETTER,
+  CJK_PUNCTUATION,
+  JAPANESE_LETTER,
+  KATAKANA_LETTER,
+  IDEOGRAPHIC_LETTER,
+} = require('./regexs/cjk');
 // TODO: add more languages
 
 const JAPANESE = `[${JAPANESE_LETTER}]`;
@@ -81,9 +111,31 @@ const LETTER_REGEX = [
 
 const WHITESPACE_REGEX = '\u0020\u2000-\u200A\u3000';
 
+const SYMBOL_REGEX = [
+  CJK_SYMBOL,
+  NKO_SYMBOL,
+  LATIN_SYMBOL,
+  GREEK_SYMBOL,
+  ARABIC_SYMBOL,
+  MUSICAL_SYMBOL,
+  SOUTHEAST_ASIAN_SYMBOL,
+].join('');
+
+const PUNCTUATION_REGEX = [
+  CJK_PUNCTUATION,
+  NKO_PUNCTUATION,
+  LATIN_PUNCTUATION,
+  GREEK_PUNCTUATION,
+  ARABIC_PUNCTUATION,
+  CYRILLIC_PUNCTUATION,
+  SOUTHEAST_ASIAN_PUNCTUATION,
+].join('');
+
 module.exports = {
+  TOKENIZER_REGEX,
   DIGIT_REGEX,
   LETTER_REGEX,
-  TOKENIZER_REGEX,
   WHITESPACE_REGEX,
+  SYMBOL_REGEX,
+  PUNCTUATION_REGEX,
 };

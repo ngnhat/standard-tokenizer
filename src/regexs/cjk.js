@@ -9,21 +9,21 @@ const CJK_ALPHANUM = Object.values({
 }).join('');
 
 const CJK_SYMBOL = Object.values({
-  Halfwidth_and_Fullwidth_Forms: '\uFF04\uFF0B\uFF1C-\uFF1E\uFF3E\uFF40\uFF61-\uFF64\uFFE0-\uFFE6\uFFE8-\uFFEE',
-  CJK_Symbols_and_Punctuation: '\u3004\u3012\u3013\u3020\u3036\u3037\u303E\u303F',
-  CJK_Strokes: '\u31C0-\u31E3',
-  CJK_Compatibility: '\u3358-\u33FF',
-  CJK_Description_Characters: '\u2FF0-\u2FFF',
-  Enclosed_CJK: '\u3200-\u3247\u3250\u3260-\u32B0\u32C0-\u32CF\u32FF',
-  Enclosed_Ideographic_Supplement: '\u{1F200}-\u{1F202}\u{1F210}-\u{1F23B}\u{1F240}-\u{1F248}\u{1F250}\u{1F251}\u{1F260}-\u{1F265}',
-  Letterlike_Symbols: '\u{2100}-\u{214F}',
+  Halfwidth_and_Fullwidth_Forms: '\\uFF04\\uFF0B\\uFF1C-\\uFF1E\\uFF3E\\uFF40\\uFF61-\\uFF64\\uFFE0-\\uFFE6\\uFFE8-\\uFFEE',
+  CJK_Symbols_and_Punctuation: '\\u3004\\u3012\\u3013\\u3020\\u3036\\u3037\\u303E\\u303F',
+  CJK_Strokes: '\\u31C0-\\u31E3',
+  CJK_Compatibility: '\\u3358-\\u33FF',
+  CJK_Description_Characters: '\\u2FF0-\\u2FFF',
+  Enclosed_CJK: '\\u3200-\\u3247\\u3250\\u3260-\\u32B0\\u32C0-\\u32CF\\u32FF',
+  Enclosed_Ideographic_Supplement: '\\u{1F200}-\\u{1F202}\\u{1F210}-\\u{1F23B}\\u{1F240}-\\u{1F248}\\u{1F250}\\u{1F251}\\u{1F260}-\\u{1F265}',
+  Letterlike_Symbols: '\\u{2100}-\\u{214F}',
 }).join('');
 
 const CJK_PUNCTUATION = Object.values({
-  Halfwidth_and_Fullwidth_Forms: '\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B-\uFF60\uFF65',
-  CJK_Symbols_and_Punctuation: '\u3001-\u3003\u3008-\u3011\u3014-\u301F',
-  CJK_Compatibility_Forms: '\uFE30-\uFE4F',
-  KATAKANA: '\u30FB',
+  Halfwidth_and_Fullwidth_Forms: '\\uFF01-\\uFF03\\uFF05-\\uFF0A\\uFF0C-\\uFF0F\\uFF1A\\uFF1B\\uFF1F\\uFF20\\uFF3B-\\uFF3D\\uFF3F\\uFF5B-\\uFF60\\uFF65',
+  CJK_Symbols_and_Punctuation: '\\u3001-\\u3003\\u3008-\\u3011\\u3014-\\u301F',
+  CJK_Compatibility_Forms: '\\uFE30-\\uFE4F',
+  KATAKANA: '\\u30FB',
 }).join('');
 
 const IDEOGRAPHIC_LETTER = Object.values({

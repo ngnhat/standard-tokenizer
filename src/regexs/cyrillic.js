@@ -6,7 +6,7 @@ const CYRILLIC_LETTER = Object.values({
   Extended_C: '\u1C80-\u1C8F',
 }).join('');
 
-const CYRILLIC_PUNCTUATION = '\uA673\uA67E';
+const CYRILLIC_PUNCTUATION = '\\uA673\\uA67E';
 
 module.exports = {
   CYRILLIC_LETTER,

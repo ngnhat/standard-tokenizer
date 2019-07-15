@@ -90,3 +90,53 @@ describe('whitespace edge-ngram tokenizer', () => {
     ]);
   });
 });
+
+
+describe('punctuation edge-ngram tokenizer', () => {
+  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreater({
+    min: 1,
+    max: 20,
+    filters: ['asciifolding'],
+    tokenChars: ['whitespace', 'punctuation'],
+  });
+
+  it('!"#%&($√)*,-./:;?@[]_{}', () => {
+    expect(asciifoldingNGramTokenizer('!"#%&()*,-$√./:;?@[]_{}')).toEqual([
+      '!',
+      '!"',
+      '!"#',
+      '!"#%',
+      '!"#%&',
+      '!"#%&(',
+      '!"#%&()',
+      '!"#%&()*',
+      '!"#%&()*,',
+      '!"#%&()*,-',
+      '.',
+      './',
+      './:',
+      './:;',
+      './:;?',
+      './:;?@',
+      './:;?@[',
+      './:;?@[]',
+      './:;?@[]_',
+      './:;?@[]_{',
+      './:;?@[]_{}',
+    ]);
+  });
+});
+
+
+describe('symbol edge-ngram tokenizer', () => {
+  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreater({
+    min: 1,
+    max: 20,
+    filters: ['asciifolding'],
+    tokenChars: ['whitespace', 'symbol'],
+  });
+
+  it('!"$√', () => {
+    expect(asciifoldingNGramTokenizer('!"$√')).toEqual(['$', '$√']);
+  });
+});

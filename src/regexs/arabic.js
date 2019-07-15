@@ -10,14 +10,14 @@ const ARABIC_LETTER = Object.values({
 }).join('');
 
 const ARABIC_SYMBOL = Object.values({
-  Standard: '\u0606-\u0608\u060B\u06DE\u06E9\u06FD\u06FE',
-  Presentation_Forms_A: '\uFBB2-\uFBC1\uFDFC\uFDFD',
-  Mathematical_Alphabetic_Symbols: '\u{1EEF0}\u{1EEF1}',
+  Standard: '\\u0606-\\u0608\\u060B\\u06DE\\u06E9\\u06FD\\u06FE',
+  Presentation_Forms_A: '\\uFBB2-\\uFBC1\\uFDFC\\uFDFD',
+  Mathematical_Alphabetic_Symbols: '\\u{1EEF0}\\u{1EEF1}',
 }).join('');
 
 const ARABIC_PUNCTUATION = Object.values({
-  Standard: '\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4',
-  Presentation_Forms_A: '\uFD3E\uFD3F',
+  Standard: '\\u0609\\u060A\\u060C\\u060D\\u061B\\u061E\\u061F\\u066A-\\u066D\\u06D4',
+  Presentation_Forms_A: '\\uFD3E\\uFD3F',
 }).join('');
 
 module.exports = {

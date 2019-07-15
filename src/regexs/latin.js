@@ -18,11 +18,15 @@ const LATIN_LETTER = Object.values({
 const LATIN_DIGIT = '\u0030-\u0039';
 
 const LATIN_SYMBOL = Object.values({
-  Basic: '\u0024\u002B\u003C-\u003E\u005E\u0060\u007C\u007E',
+  Basic: '\\u0024\\u002B\\u003C-\\u003E\\u005E\\u0060\\u007C\\u007E',
+  Latin_Extended_d: '\\uA789\\uA78A',
+  Mathematical_Operators: '\\u2200-\\u22FF',
+  Supplement: '\\u00A2-\\u00A6\\u00A8\\u00AC\\u00AF-\\u00B1\\u00B4\\u00B8\\u00D7\\u00F7',
 }).join('');
 
 const LATIN_PUNCTUATION = Object.values({
-  Basic: '\u0021-\u0023\u0025-\u002A\u002C-\u002F\u003A\u003B\u003F\u0040\u005B-\u005D\u005F\u007B\u007D',
+  Basic: '\\u0021-\\u0023\\u0025-\\u002A\\u002C-\\u002F\\u003A\\u003B\\u003F\\u0040\\u005B-\\u005D\\u005F\\u007B\\u007D',
+  Supplement: '\\u00A1\\u00A7\\u00AB\\u00B6\\u00B7\\u00BB\\u00BF',
 }).join('');
 
 module.exports = {

@@ -83,3 +83,71 @@ describe('asciifolding ngram tokenizer', () => {
     ]);
   });
 });
+
+
+describe('whitespace ngram tokenizer', () => {
+  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+    min: 4,
+    max: 4,
+    filters: ['asciifolding'],
+    tokenChars: ['letter', 'digit', 'whitespace'],
+  });
+
+  it('Nam quốc sơn hà Nam đế cư', () => {
+    expect(asciifoldingNGramTokenizer('Nam quốc sơn hà Nam đế cư')).toEqual([
+      'nam ',
+      'am q',
+      'm qu',
+      ' quo',
+      'quoc',
+      'uoc ',
+      'oc s',
+      'c so',
+      ' son',
+      'son ',
+      'on h',
+      'n ha',
+      ' ha ',
+      'ha n',
+      'a na',
+      ' nam',
+      'nam ',
+      'am d',
+      'm de',
+      ' de ',
+      'de c',
+      'e cu',
+    ]);
+  });
+});
+
+describe('punctuation ngram tokenizer', () => {
+  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+    min: 10,
+    max: 11,
+    filters: ['asciifolding'],
+    tokenChars: ['whitespace', 'punctuation'],
+  });
+
+  it('!"#%&($√)*,-./:;?@[]_{}', () => {
+    expect(asciifoldingNGramTokenizer('!"#%&()*,-$√./:;?@[]_{}')).toEqual([
+      '!"#%&()*,-',
+      './:;?@[]_{',
+      './:;?@[]_{}',
+      '/:;?@[]_{}',
+    ]);
+  });
+});
+
+describe('symbol ngram tokenizer', () => {
+  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+    min: 1,
+    max: 4,
+    filters: ['asciifolding'],
+    tokenChars: ['whitespace', 'symbol'],
+  });
+
+  it('!"$√', () => {
+    expect(asciifoldingNGramTokenizer('!"$√')).toEqual(['$', '$√', '√']);
+  });
+});

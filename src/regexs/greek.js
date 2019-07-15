@@ -5,13 +5,13 @@ const GREEK_LETTER = Object.values({
 }).join('');
 
 const GREEK_SYMBOL = Object.values({
-  Ancient_Symbols: '\u{10190}-\u{101CF}',
-  Ancient_Greek_Numbers: '\u{10175}-\u{1018E}',
+  Ancient_Symbols: '\\u{10190}-\\u{101CF}',
+  Ancient_Greek_Numbers: '\\u{10175}-\\u{1018E}',
 }).join('');
 
 const GREEK_PUNCTUATION = Object.values({
-  Greek_Extended: '\u1FBD-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD-\u1FFF',
-  Greek_and_Coptic: '\u037E\u0387',
+  Greek_Extended: '\\u1FBD-\\u1FC1\\u1FCD-\\u1FCF\\u1FDD-\\u1FDF\\u1FED-\\u1FEF\\u1FFD-\\u1FFF',
+  Greek_and_Coptic: '\\u037E\\u0387',
 }).join('');
 
 // const COPTIC_EPACT_NUMBERS = '\u{102E0}-\u{102FF}';

@@ -10,15 +10,6 @@ const MYANMAR_LETTER = Object.values({
   Myanmar_Extended_B: '\uA9E0-\uA9EF\uA9FA-\uA9FF',
 }).join('');
 
-const MYANMAR_SYMBOL = Object.values({
-  Standard: '\u104C-\u104F\u109E-\u109F',
-  Myanmar_Extended_A: '\uAA77-\uAA79',
-}).join('');
-
-const MYANMAR_PUNCTUATION = Object.values({
-  Standard: '\u104A-\u104B',
-}).join('');
-
 const SOUTHEAST_ASIAN_LETTER = Object.values({
   MYANMAR_LETTER,
   Ahom: '\uDF00-\uDF3F',
@@ -48,17 +39,18 @@ const SOUTHEAST_ASIAN_DIGIT = Object.values({
 }).join('');
 
 const SOUTHEAST_ASIAN_SYMBOL = Object.values({
-  MYANMAR_SYMBOL,
-  Thai: '\u0E3F',
-  Khmer: '\u17DB\u17F0-\u17F9',
-  Khmer_Symbol: '\u19E0-\u19FF',
+  Thai: '\\u0E3F',
+  Khmer: '\\u17DB\\u17F0-\\u17F9',
+  Khmer_Symbol: '\\u19E0-\\u19FF',
+  Myanmar_Extended_A: '\\uAA77-\\uAA79',
+  Myanmar: '\\u104C-\\u104F\\u109E-\\u109F',
 }).join('');
 
 const SOUTHEAST_ASIAN_PUNCTUATION = Object.values({
-  MYANMAR_PUNCTUATION,
-  Kayah_Li: '\uA92E-\uA92F',
-  Cham: '\uAA5C-\uAA5F',
-  Pahawh_Hmong: '\u{16B37}-\u{16B3B}\u{16B44}-\u{16B45}',
+  Cham: '\\uAA5C-\\uAA5F',
+  Myanmar: '\\u104A-\\u104B',
+  Kayah_Li: '\\uA92E-\\uA92F',
+  Pahawh_Hmong: '\\u{16B37}-\\u{16B3B}\\u{16B44}-\\u{16B45}',
 }).join('');
 
 module.exports = {

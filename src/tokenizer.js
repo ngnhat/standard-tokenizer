@@ -61,7 +61,7 @@ const gramTokenizer = (str = '', tokenChars = []) => {
     const strLowercased = `${str}`.toLowerCase();
 
     if (!tokenChars.length) {
-      return strLowercased;
+      return [strLowercased];
     }
 
     const regexString = tokenChars.reduce((acc, char) => (

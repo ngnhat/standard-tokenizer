@@ -52,11 +52,11 @@ const DIGIT_REGEX = Object.values({
   ARABIC_DIGIT,
   CJK_DIGIT,
   NKO_DIGIT,
-  Bengali_Digits: '\u09e6-\u09ef',
-  Malayalam_Digits: '\u0d66-\u0D6F',
+  Bengali_Digits: '\\u09e6-\\u09ef',
+  Malayalam_Digits: '\\u0d66-\\u0D6F',
 }).join('');
 
-const underscore = '\u005F\uFF3F';
+const underscore = '\\u005F\\uFF3F';
 const LATIN_REGEX = `${underscore}${DIGIT_REGEX}${LATIN_LETTER}`;
 
 const ALPHANUM = `[${[
@@ -72,10 +72,10 @@ const ALPHANUM = `[${[
 
 const alphaNumSource = `${LATIN_LETTER}${DIGIT_REGEX}`;
 
-const singleQuote = '\u0027';
-const midNum = '\u066C\uFE50\uFE54\uFF0C\uFF1B';
-const midNumLet = '\u002E\u2018\u2019\u2024\uFE52\uFF07\uFF0E';
-const midLetter = '\u00B7\u0387\u05F4\u2027\u003A\uFE13\uFE55\uFF1A';
+const singleQuote = '\\u0027';
+const midNum = '\\u066C\\uFE50\\uFE54\\uFF0C\\uFF1B';
+const midNumLet = '\\u002E\\u2018\\u2019\\u2024\\uFE52\\uFF07\\uFF0E';
+const midLetter = '\\u00B7\\u0387\\u05F4\\u2027\\u003A\\uFE13\\uFE55\\uFF1A';
 const allMidNumbers = `${singleQuote}${midNum}${midNumLet}`;
 const allMidLetters = `${singleQuote}${midLetter}${midNumLet}`;
 
@@ -109,7 +109,7 @@ const LETTER_REGEX = [
   DIACRITICAL_MARKS,
 ].join('');
 
-const WHITESPACE_REGEX = '\u0020\u2000-\u200A\u3000';
+const WHITESPACE_REGEX = '\\u0020\\u2000-\\u200A\\u3000';
 
 const SYMBOL_REGEX = [
   CJK_SYMBOL,

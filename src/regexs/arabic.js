@@ -1,12 +1,12 @@
-const ARABIC_DIGIT = '\u0660-\u0669\u06F0-\u06F9';
+const ARABIC_DIGIT = '\\u0660-\\u0669\\u06F0-\\u06F9';
 
 const ARABIC_LETTER = Object.values({
-  Standard: '\u0600-\u0605\u060E-\u061A\u0620-\u065F\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06EF\u06FA-\u06FC\u06FF',
-  Supplement: '\u0750-\u077F',
-  Extended_A: '\u08A0-\u08FF',
-  Presentation_Forms_A: '\uFB50-\uFBB1\uFBD3-\uFD3D\uFD50-\uFDFB',
-  Presentation_Forms_B: '\uFE70-\uFEFF',
-  Mathematical_Alphabetic_Symbols: '\u{1EE00}-\u{1EEBB}',
+  Standard: '\\u0600-\\u0605\\u060E-\\u061A\\u0620-\\u065F\\u066E-\\u06D3\\u06D5-\\u06DC\\u06DF-\\u06E8\\u06EA-\\u06EF\\u06FA-\\u06FC\\u06FF',
+  Supplement: '\\u0750-\\u077F',
+  Extended_A: '\\u08A0-\\u08FF',
+  Presentation_Forms_A: '\\uFB50-\\uFBB1\\uFBD3-\\uFD3D\\uFD50-\\uFDFB',
+  Presentation_Forms_B: '\\uFE70-\\uFEFF',
+  Mathematical_Alphabetic_Symbols: '\\u{1EE00}-\\u{1EEBB}',
 }).join('');
 
 const ARABIC_SYMBOL = Object.values({

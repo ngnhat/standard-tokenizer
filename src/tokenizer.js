@@ -9,8 +9,8 @@ const {
 } = require('./regex-tokenizer');
 
 const SPECIAL_REGEX = /^_+$/g;
-const asciiMappingKeys = [...asciiMapping.keys()];
-const asciiRegex = new RegExp(`[${asciiMappingKeys.join('')}]`, 'ug');
+const asciiCharacterSet = `[${[...asciiMapping.keys()].join('')}]`;
+const asciiRegex = new RegExp(asciiCharacterSet, 'ug');
 
 const CHARS_MAPPING = {
   digit: DIGIT_REGEX,

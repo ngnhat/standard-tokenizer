@@ -15,7 +15,7 @@ const LATIN_LETTER = Object.values({
   Enclosed_Alphanumerics: '\\u24B6-\\u24E9',
 }).join('');
 
-const LATIN_DIGIT = '\u0030-\u0039';
+const LATIN_DIGIT = '\\u0030-\\u0039';
 
 const LATIN_SYMBOL = Object.values({
   Basic: '\\u0024\\u002B\\u003C-\\u003E\\u005E\\u0060\\u007C\\u007E',

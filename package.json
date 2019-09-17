@@ -12,11 +12,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.1",
-    "eslint-plugin-jest": "^22.11.1",
-    "jest": "^24.8.0"
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "jest": "^24.9.0"
   },
   "description": "tokenizer",
   "engines": {

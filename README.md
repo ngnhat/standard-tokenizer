@@ -6,11 +6,11 @@ Install tokenizers from npm
 
 With yarn
 
-    yarn add tokenizers
+    yarn add tokenizes
 
 or alternatively using npm:
 
-    npm install --save tokenizers
+    npm install --save tokenizes
 
 ___
     const {
@@ -19,7 +19,7 @@ ___
       asciiFoldingTokenizer,
       nGramTokenizerCreater,
       edgeNGramTokenizerCreater,
-    } = require('tokenizers');
+    } = require('tokenizes');
 
 
     asciiFolding('Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉO')

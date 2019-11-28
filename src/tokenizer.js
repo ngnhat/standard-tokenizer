@@ -21,7 +21,7 @@ const CHARS_MAPPING = {
 };
 
 const asciiFolding = (str = '') => (
-  str.replace(asciiRegex, character => asciiMapping.get(character) || character)
+  str.replace(asciiRegex, (character) => asciiMapping.get(character) || character)
 );
 
 const FILER_MAPPING = {
@@ -33,7 +33,7 @@ const standardTokenizer = (str = '') => {
     const strLowercased = `${str}`.toLowerCase();
     const tokens = strLowercased.match(TOKENIZER_REGEX) || [];
 
-    return tokens.filter(token => !token.match(SPECIAL_REGEX));
+    return tokens.filter((token) => !token.match(SPECIAL_REGEX));
   } catch (err) {
     console.error(err);
     return [];
@@ -80,11 +80,11 @@ const nGram = (min, max) => {
   const gramLengths = new Array(max - min + 1).fill(0).map((_, index) => min + index);
 
   const grams = (str = '') => {
-    const lengths = gramLengths.filter(length => length <= str.length);
+    const lengths = gramLengths.filter((length) => length <= str.length);
 
     if (lengths.length > 0) {
       return [
-        ...lengths.map(length => str.slice(0, length)),
+        ...lengths.map((length) => str.slice(0, length)),
         ...grams(str.slice(1)),
       ];
     }
@@ -99,10 +99,10 @@ const edgeNGram = (min, max) => {
   const gramLengths = new Array(max - min + 1).fill(0).map((_, index) => min + index);
 
   const edgeGrams = (str = '') => {
-    const lengths = gramLengths.filter(length => length <= str.length);
+    const lengths = gramLengths.filter((length) => length <= str.length);
 
     if (lengths.length > 0) {
-      return lengths.map(length => str.slice(0, length));
+      return lengths.map((length) => str.slice(0, length));
     }
 
     return [];
@@ -140,7 +140,7 @@ const gramValidation = (parameters) => {
   }
 };
 
-const nGramTokenizerCreater = parameters => (_str = '') => {
+const nGramTokenizerCreater = (parameters) => (_str = '') => {
   gramValidation(parameters);
   const {
     min,
@@ -157,7 +157,7 @@ const nGramTokenizerCreater = parameters => (_str = '') => {
     ]), []);
 };
 
-const edgeNGramTokenizerCreater = parameters => (_str = '') => {
+const edgeNGramTokenizerCreater = (parameters) => (_str = '') => {
   gramValidation(parameters);
   const {
     min,

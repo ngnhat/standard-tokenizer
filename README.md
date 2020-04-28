@@ -17,8 +17,8 @@ ___
       asciiFolding,
       standardTokenizer,
       asciiFoldingTokenizer,
-      nGramTokenizerCreater,
-      edgeNGramTokenizerCreater,
+      nGramTokenizerCreator,
+      edgeNGramTokenizerCreator,
     } = require('tokenizes');
 
 
@@ -34,7 +34,7 @@ ___
     // ~ [ 'dusseldorf', 'koln', 'москва', '北', '京', '市' ];
 
 
-    const standardNGramTokenizer = nGramTokenizerCreater({
+    const standardNGramTokenizer = nGramTokenizerCreator({
       min: 3,
       max: 4,
       tokenChars: ['letter', 'digit'],
@@ -43,7 +43,7 @@ ___
     // ~ ['nam', 'quố', 'quốc', 'uốc', 'sơn', 'nam']
 
 
-    const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreater({
+    const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreator({
       min: 2,
       max: 10,
       filters: ['asciifolding'],

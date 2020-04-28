@@ -1,10 +1,10 @@
 /**
  * Created by ngnhat on Fri July 12 2019
  */
-const { nGramTokenizerCreater } = require('../src/tokenizer');
+const { nGramTokenizerCreator } = require('../src/tokenizer');
 
 describe('standard ngram tokenizer', () => {
-  const standardNGramTokenizer = nGramTokenizerCreater({
+  const standardNGramTokenizer = nGramTokenizerCreator({
     min: 2,
     max: 3,
     tokenChars: ['letter', 'digit'],
@@ -54,7 +54,7 @@ describe('standard ngram tokenizer', () => {
 
 
 describe('asciifolding ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = nGramTokenizerCreator({
     min: 2,
     max: 3,
     filters: ['asciifolding'],
@@ -86,7 +86,7 @@ describe('asciifolding ngram tokenizer', () => {
 
 
 describe('whitespace ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = nGramTokenizerCreator({
     min: 4,
     max: 4,
     filters: ['asciifolding'],
@@ -122,7 +122,7 @@ describe('whitespace ngram tokenizer', () => {
 });
 
 describe('punctuation ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = nGramTokenizerCreator({
     min: 10,
     max: 11,
     filters: ['asciifolding'],
@@ -140,7 +140,7 @@ describe('punctuation ngram tokenizer', () => {
 });
 
 describe('symbol ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = nGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = nGramTokenizerCreator({
     min: 1,
     max: 4,
     filters: ['asciifolding'],

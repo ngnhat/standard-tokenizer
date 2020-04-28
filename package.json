@@ -1,6 +1,6 @@
 {
   "name": "tokenizes",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "main": "index.js",
   "author": "ngnhat",
   "repository": {
@@ -14,9 +14,9 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
-    "jest": "^25.1.0"
+    "jest": "^25.4.0"
   },
   "description": "tokenizer",
   "engines": {

@@ -1,10 +1,10 @@
 /**
  * Created by ngnhat on Fri July 12 2019
  */
-const { edgeNGramTokenizerCreater } = require('../src/tokenizer');
+const { edgeNGramTokenizerCreator } = require('../src/tokenizer');
 
 describe('standard edge-ngram tokenizer', () => {
-  const standardEdgeNGramTokenizer = edgeNGramTokenizerCreater({
+  const standardEdgeNGramTokenizer = edgeNGramTokenizerCreator({
     min: 2,
     max: 10,
     tokenChars: ['letter', 'digit'],
@@ -43,7 +43,7 @@ describe('standard edge-ngram tokenizer', () => {
 
 
 describe('asciifolding edge-ngram tokenizer', () => {
-  const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreater({
+  const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreator({
     min: 2,
     max: 10,
     filters: ['asciifolding'],
@@ -69,7 +69,7 @@ describe('asciifolding edge-ngram tokenizer', () => {
 });
 
 describe('whitespace edge-ngram tokenizer', () => {
-  const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreater({
+  const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreator({
     min: 2,
     max: 10,
     filters: ['asciifolding'],
@@ -93,7 +93,7 @@ describe('whitespace edge-ngram tokenizer', () => {
 
 
 describe('punctuation edge-ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreator({
     min: 1,
     max: 20,
     filters: ['asciifolding'],
@@ -129,7 +129,7 @@ describe('punctuation edge-ngram tokenizer', () => {
 
 
 describe('symbol edge-ngram tokenizer', () => {
-  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreater({
+  const asciifoldingNGramTokenizer = edgeNGramTokenizerCreator({
     min: 1,
     max: 20,
     filters: ['asciifolding'],

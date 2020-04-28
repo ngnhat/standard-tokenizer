@@ -140,7 +140,7 @@ const gramValidation = (parameters) => {
   }
 };
 
-const nGramTokenizerCreater = (parameters) => (_str = '') => {
+const nGramTokenizerCreator = (parameters) => (_str = '') => {
   gramValidation(parameters);
   const {
     min,
@@ -157,7 +157,7 @@ const nGramTokenizerCreater = (parameters) => (_str = '') => {
     ]), []);
 };
 
-const edgeNGramTokenizerCreater = (parameters) => (_str = '') => {
+const edgeNGramTokenizerCreator = (parameters) => (_str = '') => {
   gramValidation(parameters);
   const {
     min,
@@ -177,6 +177,6 @@ module.exports = {
   asciiFolding,
   standardTokenizer,
   asciiFoldingTokenizer,
-  nGramTokenizerCreater,
-  edgeNGramTokenizerCreater,
+  nGramTokenizerCreator,
+  edgeNGramTokenizerCreator,
 };

@@ -52,7 +52,6 @@ describe('standard ngram tokenizer', () => {
   });
 });
 
-
 describe('asciifolding ngram tokenizer', () => {
   const asciifoldingNGramTokenizer = nGramTokenizerCreator({
     min: 2,
@@ -83,7 +82,6 @@ describe('asciifolding ngram tokenizer', () => {
     ]);
   });
 });
-
 
 describe('whitespace ngram tokenizer', () => {
   const asciifoldingNGramTokenizer = nGramTokenizerCreator({

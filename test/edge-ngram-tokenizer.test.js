@@ -41,7 +41,6 @@ describe('standard edge-ngram tokenizer', () => {
   });
 });
 
-
 describe('asciifolding edge-ngram tokenizer', () => {
   const asciifoldingEdgeNGramTokenizer = edgeNGramTokenizerCreator({
     min: 2,
@@ -91,7 +90,6 @@ describe('whitespace edge-ngram tokenizer', () => {
   });
 });
 
-
 describe('punctuation edge-ngram tokenizer', () => {
   const asciifoldingNGramTokenizer = edgeNGramTokenizerCreator({
     min: 1,
@@ -126,7 +124,6 @@ describe('punctuation edge-ngram tokenizer', () => {
     ]);
   });
 });
-
 
 describe('symbol edge-ngram tokenizer', () => {
   const asciifoldingNGramTokenizer = edgeNGramTokenizerCreator({
